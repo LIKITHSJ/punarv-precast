@@ -3,19 +3,19 @@ import { motion } from "framer-motion";
 import { Factory, MapPin } from "lucide-react";
 import { areasServed } from "../data/areas";
 
-const RADIUS = 220;
+const RADIUS_PERCENT = 38;
 
-function polarPoint(index, total, radius) {
+function polarPercent(index, total, radiusPercent) {
   const angle = (index / total) * 2 * Math.PI - Math.PI / 2;
   return {
-    x: Math.cos(angle) * radius,
-    y: Math.sin(angle) * radius,
+    x: Math.cos(angle) * radiusPercent,
+    y: Math.sin(angle) * radiusPercent,
   };
 }
 
 export default function Areas() {
   const points = useMemo(
-    () => areasServed.map((_, i) => polarPoint(i, areasServed.length, RADIUS)),
+    () => areasServed.map((_, i) => polarPercent(i, areasServed.length, RADIUS_PERCENT)),
     []
   );
 
@@ -39,21 +39,21 @@ export default function Areas() {
           </h2>
         </motion.div>
 
-        <div className="relative mx-auto hidden h-135 max-w-3xl items-center justify-center lg:flex">
-          <svg viewBox="-260 -260 520 520" className="absolute inset-0 h-full w-full">
+        <div className="relative mx-auto aspect-square w-full max-w-[300px] sm:max-w-md md:max-w-lg lg:max-w-2xl">
+          <svg viewBox="-50 -50 100 100" className="absolute inset-0 h-full w-full">
             {points.map((p, i) => (
               <motion.line
                 key={i}
                 x1="0" y1="0" x2={p.x} y2={p.y}
-                stroke="#163A5C" strokeWidth="1" strokeDasharray="4 5" strokeOpacity="0.35"
+                stroke="#163A5C" strokeWidth="0.3" strokeDasharray="1.2 1.4" strokeOpacity="0.35"
                 initial={{ pathLength: 0 }}
                 whileInView={{ pathLength: 1 }}
                 viewport={{ once: true, amount: 0.3 }}
                 transition={{ duration: 0.8, delay: 0.3 + i * 0.08 }}
               />
             ))}
-            {[110, 165, 220].map((r) => (
-              <circle key={r} cx="0" cy="0" r={r} fill="none" stroke="#8B9196" strokeOpacity="0.2" />
+            {[20, 30, 40].map((r) => (
+              <circle key={r} cx="0" cy="0" r={r} fill="none" stroke="#8B9196" strokeOpacity="0.2" strokeWidth="0.25" />
             ))}
           </svg>
 
@@ -62,10 +62,12 @@ export default function Areas() {
             whileInView={{ scale: 1 }}
             viewport={{ once: true, amount: 0.3 }}
             transition={{ duration: 0.5, type: "spring", bounce: 0.4 }}
-            className="relative z-10 flex h-24 w-24 flex-col items-center justify-center rounded-full bg-navy text-cream shadow-xl"
+            className="absolute left-1/2 top-1/2 z-10 flex h-16 w-16 -translate-x-1/2 -translate-y-1/2 flex-col items-center justify-center rounded-full bg-navy text-cream shadow-xl sm:h-20 sm:w-20 lg:h-24 lg:w-24"
           >
-            <Factory size={22} className="text-gold" />
-            <span className="mt-1 text-[9px] font-bold uppercase tracking-wide">Plant</span>
+            <Factory size={20} className="text-gold sm:size-6" />
+            <span className="mt-1 text-[7px] font-bold uppercase tracking-wide sm:text-[9px]">
+              Plant
+            </span>
           </motion.div>
 
           {areasServed.map((area, i) => (
@@ -76,31 +78,17 @@ export default function Areas() {
               viewport={{ once: true, amount: 0.3 }}
               transition={{ duration: 0.45, delay: 0.5 + i * 0.08, ease: [0.22, 1, 0.36, 1] }}
               whileHover={{ scale: 1.08, borderColor: "#F4C542" }}
+              whileTap={{ scale: 1.08, borderColor: "#F4C542" }}
               style={{
                 position: "absolute",
-                left: `calc(50% + ${points[i].x}px)`,
-                top: `calc(50% + ${points[i].y}px)`,
+                left: `calc(50% + ${points[i].x}%)`,
+                top: `calc(50% + ${points[i].y}%)`,
                 transform: "translate(-50%, -50%)",
               }}
-              className="flex items-center gap-1.5 whitespace-nowrap rounded-full border border-navy/15 bg-cream-dark px-4 py-2 text-xs font-bold text-navy shadow-sm"
+              className="flex items-center gap-1 whitespace-nowrap rounded-full border border-navy/15 bg-cream-dark px-2 py-1 text-[9px] font-bold text-navy shadow-sm sm:gap-1.5 sm:px-4 sm:py-2 sm:text-xs"
             >
-              <MapPin size={12} className="text-maroon" />
-              {area}
-            </motion.div>
-          ))}
-        </div>
-
-        <div className="grid grid-cols-2 gap-3 sm:grid-cols-3 lg:hidden">
-          {areasServed.map((area, i) => (
-            <motion.div
-              key={area}
-              initial={{ opacity: 0, y: 16 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true, amount: 0.4 }}
-              transition={{ delay: i * 0.06, duration: 0.4 }}
-              className="flex items-center gap-2 rounded-xl border border-navy/10 bg-cream-dark px-4 py-3 text-sm font-bold text-navy"
-            >
-              <MapPin size={14} className="text-maroon" />
+              <MapPin size={10} className="shrink-0 text-maroon sm:hidden" />
+              <MapPin size={12} className="hidden shrink-0 text-maroon sm:block" />
               {area}
             </motion.div>
           ))}
