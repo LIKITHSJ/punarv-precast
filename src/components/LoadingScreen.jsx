@@ -34,7 +34,7 @@ export default function LoadingScreen({ onComplete }) {
   }, [onComplete]);
 
   return (
-    <motion.div className="fixed inset-0 z-100 flex items-center justify-center overflow-hidden bg-navy">
+    <motion.div className="fixed inset-0 z-[100] flex items-center justify-center overflow-hidden bg-navy">
       <motion.div
         className="absolute inset-y-0 left-0 w-1/2 bg-navy brick-bg-dark"
         initial={{ x: 0 }}
@@ -42,7 +42,7 @@ export default function LoadingScreen({ onComplete }) {
         transition={{ duration: 0.9, ease: [0.76, 0, 0.24, 1] }}
       />
       <motion.div
-        className="absolute inset-y-0 right-0 w-1/2 bg-navy brick-bg"
+        className="absolute inset-y-0 right-0 w-1/2 bg-navy brick-bg-dark"
         initial={{ x: 0 }}
         exit={{ x: "100%" }}
         transition={{ duration: 0.9, ease: [0.76, 0, 0.24, 1] }}
@@ -62,10 +62,10 @@ export default function LoadingScreen({ onComplete }) {
               initial="hidden"
               animate="visible"
               style={{ transformOrigin: "top" }}
-              className="w-0.75 bg-gold sm:w-1"
+              className="w-[3px] bg-gold sm:w-1"
             />
           ))}
-          <div className="absolute inset-x-0 top-1/2 flex -translate-y-1/2 flex-col gap-1.5">
+          <div className="absolute inset-x-0 top-1/2 flex -translate-y-1/2 flex-col gap-[6px]">
             {PANELS.map((_, i) => (
               <motion.span
                 key={i}
@@ -74,7 +74,7 @@ export default function LoadingScreen({ onComplete }) {
                 initial="hidden"
                 animate="visible"
                 style={{ transformOrigin: "center" }}
-                className="mx-auto h-0.75 w-24 rounded-full bg-concrete sm:w-40"
+                className="mx-auto h-[3px] w-24 rounded-full bg-concrete sm:w-40"
               />
             ))}
           </div>
@@ -101,7 +101,7 @@ export default function LoadingScreen({ onComplete }) {
           </motion.div>
         )}
 
-        <div className="mt-10 h-0.5 w-40 overflow-hidden rounded-full bg-cream/10 sm:w-56">
+        <div className="mt-10 h-[2px] w-40 overflow-hidden rounded-full bg-cream/10 sm:w-56">
           <motion.div
             initial={{ width: "0%" }}
             animate={{ width: "100%" }}
