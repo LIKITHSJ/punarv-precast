@@ -1,5 +1,6 @@
 @import "tailwindcss";
 @import url('https://fonts.googleapis.com/css2?family=Barlow+Condensed:wght@500;600;700;800&family=Barlow:wght@400;500;600;700&display=swap');
+
 @theme {
   --color-gold: #F4C542;
   --color-gold-dark: #D4A62E;
@@ -53,6 +54,13 @@
       linear-gradient(rgba(253,248,237,0.94), rgba(253,248,237,0.94)),
       repeating-linear-gradient(0deg, transparent, transparent 39px, rgba(22,58,92,0.06) 39px, rgba(22,58,92,0.06) 40px),
       repeating-linear-gradient(90deg, transparent, transparent 79px, rgba(22,58,92,0.06) 79px, rgba(22,58,92,0.06) 80px);
+  }
+
+  .brick-bg-dark {
+    background-image:
+      linear-gradient(rgba(22,58,92,0.94), rgba(22,58,92,0.94)),
+      repeating-linear-gradient(0deg, transparent, transparent 39px, rgba(253,248,237,0.05) 39px, rgba(253,248,237,0.05) 40px),
+      repeating-linear-gradient(90deg, transparent, transparent 79px, rgba(253,248,237,0.05) 79px, rgba(253,248,237,0.05) 80px);
   }
 
   .text-gold-gradient {
