@@ -1,1 +1,65 @@
 @import "tailwindcss";
+@import url('https://fonts.googleapis.com/css2?family=Barlow+Condensed:wght@500;600;700;800&family=Barlow:wght@400;500;600;700&display=swap');
+
+@theme {
+  --color-gold: #F4C542;
+  --color-gold-dark: #D4A62E;
+  --color-navy: #163A5C;
+  --color-navy-light: #2C6690;
+  --color-maroon: #7A1F1F;
+  --color-maroon-light: #9C3232;
+  --color-cream: #FDF8ED;
+  --color-cream-dark: #F5ECD8;
+  --color-concrete: #8B9196;
+  --color-charcoal: #21262B;
+
+  --font-heading: "Barlow Condensed", sans-serif;
+  --font-body: "Barlow", sans-serif;
+}
+
+@layer base {
+  html { scroll-behavior: smooth; }
+  body {
+    font-family: var(--font-body);
+    color: var(--color-charcoal);
+    background: var(--color-cream);
+  }
+  h1, h2, h3, h4, h5, h6 {
+    font-family: var(--font-heading);
+    letter-spacing: 0.01em;
+  }
+  ::selection { background: var(--color-gold); color: var(--color-charcoal); }
+}
+
+@layer utilities {
+  .wall-divider {
+    height: 4px;
+    background-image: repeating-linear-gradient(
+      to right,
+      var(--color-gold) 0px, var(--color-gold) 8px,
+      transparent 8px, transparent 56px
+    );
+  }
+
+  .panel-texture {
+    background-image: repeating-linear-gradient(
+      to bottom,
+      rgba(0,0,0,0.045) 0px, rgba(0,0,0,0.045) 1px,
+      transparent 1px, transparent 14px
+    );
+  }
+
+  .brick-bg {
+    background-image:
+      linear-gradient(rgba(253,248,237,0.94), rgba(253,248,237,0.94)),
+      repeating-linear-gradient(0deg, transparent, transparent 39px, rgba(22,58,92,0.06) 39px, rgba(22,58,92,0.06) 40px),
+      repeating-linear-gradient(90deg, transparent, transparent 79px, rgba(22,58,92,0.06) 79px, rgba(22,58,92,0.06) 80px);
+  }
+
+  .text-gold-gradient {
+    background: linear-gradient(135deg, var(--color-gold), var(--color-maroon-light));
+    -webkit-background-clip: text;
+    background-clip: text;
+    color: transparent;
+  }
+}
