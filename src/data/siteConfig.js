@@ -8,11 +8,11 @@ export const siteConfig = {
   address: "Kalenahalli Village, Shivakote Post, Hesaraghatta Hobli, Yelahanka Taluk, Bangalore North - 560089",
   mapQuery: "Kalenahalli Village, Shivakote Post, Hesaraghatta Hobli, Yelahanka Taluk, Bangalore North 560089",
   businessHours: [
-    { day: "Monday - Saturday", time: "9:00 AM - 6:30 PM" },
-    { day: "Sunday", time: "Closed" },
+    { day: "Monday – Friday", time: "8:00 AM – 7:00 PM" },
+    { day: "Saturday", time: "8:00 AM – 5:00 PM" },
+    { day: "Sunday", time: "By Appointment" },
   ],
   mission: "Committed to providing high-quality products and services in an environmentally friendly manner, achieving the zenith level in the cement product industry — meeting the needs of customers and employees while adding value to the community.",
   vision: "With Quality, Quantity, Time and Service, our vision is to compound India with RCC Pre-Cast Wall technology.",
   about: "Punarv Precast introduces itself as a company that cares for quality cement products. We manufacture Pre-Stressed Precast Compound Walls with varied designs as per customer requirements. With a culture of deep dedication and determination, we hold a premium position among indigenous-class manufacturers — every product made under stringent quality-control norms, using raw materials from reputed suppliers.",
-  social: { facebook: "#", instagram: "#", youtube: "#" },
 };

@@ -13,7 +13,7 @@ import Gallery from "./components/Gallery";
 import Contact from "./components/Contact";
 import Footer from "./components/Footer";
 import FloatingButtons from "./components/FloatingButtons";
-
+import Team from "./components/Team";
 export default function App() {
   const [loading, setLoading] = useState(true);
 
@@ -41,6 +41,7 @@ export default function App() {
             <Contact />
             <Footer />
             <FloatingButtons />
+            <Team />
           </main>
         </>
       )}

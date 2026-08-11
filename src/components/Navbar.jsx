@@ -3,7 +3,7 @@ import { motion, AnimatePresence } from "framer-motion";
 import { Link } from "react-scroll";
 import { Menu, X, Phone } from "lucide-react";
 import { siteConfig } from "../data/siteConfig";
-
+import logo from "../assets/images/punarv_logo.png";
 const NAV_LINKS = [
   { label: "About", to: "about" },
   { label: "Why Us", to: "why-choose-us" },
@@ -53,14 +53,12 @@ export default function Navbar() {
     >
       <nav className="mx-auto flex max-w-7xl items-center justify-between px-5 py-4 sm:px-8">
         <Link to="hero" smooth duration={600} className="cursor-pointer">
-          <motion.div whileHover={{ scale: 1.04 }} className="flex flex-col leading-none">
-            <span className="text-2xl font-extrabold tracking-wide text-gold sm:text-3xl">
-              PUNARV
-            </span>
-            <span className="text-[10px] font-medium uppercase tracking-[0.4em] text-cream/70">
-              Precast
-            </span>
-          </motion.div>
+          <motion.img
+            whileHover={{ scale: 1.04 }}
+            src={logo}
+            alt="Punarv Precast"
+            className="h-12 w-auto rounded-md sm:h-20"
+          />
         </Link>
 
         <div className="hidden items-center gap-8 lg:flex">
@@ -89,8 +87,6 @@ export default function Navbar() {
           <Menu size={28} />
         </button>
       </nav>
-
-      <div className="wall-divider absolute inset-x-0 bottom-0" />
 
       <AnimatePresence>
         {open && (
