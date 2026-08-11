@@ -18,6 +18,7 @@ export const materials = {
     foundationDepth: "2 ft",
     foundationWidth: "2 ft",
     weightPerRMT: "~250 kg / RMT",
+    htWireSpacing: "High tensile wire at every 75mm distance",
   },
   characteristics: [
     "Fully RCC with Steel",
